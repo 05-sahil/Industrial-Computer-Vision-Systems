@@ -1,6 +1,6 @@
-# Industrial Computer Vision Systems
+# Industrial Fire & Smoke Detection System
 
-This repository contains 3 production-style industrial computer vision systems built using YOLO, OpenCV, and PyTorch. The projects focus on real-time perception, tracking, detection, and safety intelligence for autonomous systems, crowd monitoring, and industrial hazard detection.
+A real-time industrial hazard detection system for monitoring fire and smoke in safety-critical environments, built using YOLOv8, OpenCV, and PyTorch.
 
 --------------------------------------------------
 
@@ -11,44 +11,16 @@ GitHub: [@05-sahil](https://github.com/05-sahil)
 
 --------------------------------------------------
 
-## 1. ADAS Perception Pipeline (Autonomous Driving System)
+## Overview
 
-Industrial autonomous driving perception system inspired by real-world ADAS and self-driving stacks.
+This system combines classical computer vision (color/motion analysis) with YOLO-based object detection to identify fire and smoke in a live video feed, classify the hazard level in real time, and display an alert-driven HUD overlay.
 
-- Vehicle and pedestrian detection
-- Lane detection and road understanding
-- Depth estimation
-- Multi-object tracking
-- Collision risk analysis
-- Bird's-eye-view visualization
-
-Use case: Autonomous driving research and simulation systems
-
---------------------------------------------------
-
-## 2. Smart Crowd Panic Detection System
-
-Industrial safety and surveillance system for real-time crowd monitoring and anomaly detection.
-
-- Human detection and tracking
-- Crowd density analysis
-- Motion pattern analysis
-- Panic and anomaly detection
-- Heatmap generation and risk scoring
-
-Use case: Public safety, disaster prevention, and surveillance systems
-
---------------------------------------------------
-
-## 3. Industrial Fire & Smoke Detection System
-
-Industrial hazard detection system for real-time fire and smoke monitoring in safety-critical environments.
-
-- Fire detection using visual cues and YOLO-based detection
-- Smoke detection using motion and color-based analysis
-- Hazard level classification (safe, warning, danger)
-- Real-time alert system
-- Safety zone visualization
+- Fire detection using HSV color-space analysis and contour extraction
+- Smoke detection using motion analysis (background subtraction + frame differencing) combined with color cues
+- YOLOv8-based scene context detection (people/vehicles near the hazard)
+- Hazard level classification: CLEAR -> CAUTION -> WARNING -> CRITICAL
+- Real-time alert overlay with confidence scoring
+- GPU acceleration support with automatic CPU fallback
 
 Use case: Industrial safety, factories, warehouses, and emergency monitoring systems
 
@@ -61,24 +33,12 @@ Use case: Industrial safety, factories, warehouses, and emergency monitoring sys
 - OpenCV
 - PyTorch
 - NumPy
-- Supervision
-
---------------------------------------------------
-
-## Features
-
-- Real-time industrial computer vision pipelines
-- GPU acceleration support with CPU fallback
-- Multi-object detection and tracking
-- Heatmaps and risk visualization
-- Cinematic HUD-style overlays
-- Production-grade system design
 
 --------------------------------------------------
 
 ## Getting Started
 
-Each system is self-contained and automatically installs its own dependencies on first run.
+The script automatically installs its own dependencies on first run.
 
 ```bash
 # Clone the repository
@@ -90,16 +50,18 @@ python -m venv venv
 venv\Scripts\activate      # Windows
 source venv/bin/activate   # macOS/Linux
 
-# Run any system (0 = default webcam, or pass a video file path)
+# Run using webcam (0) or a video file path
 cd "Industrial Fire & Smoke Detection System"
 python app.py 0
 ```
+
+Press **Q** to quit the video window.
 
 --------------------------------------------------
 
 ## Goal
 
-To build industrial-grade computer vision systems that replicate real-world AI perception stacks used in autonomous driving, surveillance, and industrial safety monitoring.
+To build an industrial-grade computer vision system that replicates real-world AI hazard-detection stacks used in industrial safety and surveillance monitoring.
 
 --------------------------------------------------
 
